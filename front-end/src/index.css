@@ -1,0 +1,44 @@
+* {
+  margin: 0;
+}
+
+body {
+  margin: 0;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
+    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
+    sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+code {
+  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
+    monospace;
+}
+
+:root {
+  --background-color: #FFFFFF;
+  --font-size: 1rem;
+  --border-radius: 10px; 
+}
+
+.grid-container {
+  display: grid;
+  grid-template-columns: repeat(12, 1fr);
+  grid-template-rows: repeat(12, 1fr);
+  width: 100%;
+  height: 100vh;
+}
+
+/* Pour une colonne spécifique */
+.grid-item-col1 {
+  grid-column: 1 / 2;
+  background-color: red; 
+}
+
+/* Pour une ligne spécifique */
+.grid-item-row1 {
+  grid-row: 1 / 2;
+  background-color: blue;
+}
+
