@@ -4,6 +4,7 @@ import NavLeft from "./components/NavLeft";
 import { BrowserRouter as Router } from "react-router-dom";
 import { Route, Routes } from "react-router-dom";
 import Header from "./components/Header";
+import KeyDatasWrapper from "./components/KeyDatasWrapper";
 
 function App() {
   return (
@@ -15,6 +16,7 @@ function App() {
           <Route path="/user/:id" element={<Header/>} />
         </Routes>
       </Router>
+      <KeyDatasWrapper/>
       {/* Vos composants ici */}
     </div>
   );

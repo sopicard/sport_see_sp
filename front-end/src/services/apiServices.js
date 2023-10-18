@@ -27,4 +27,22 @@ const mockData = {
       return data;
     }
   };
+
+  export const getKeyDataById = async (id, useMock = true) => {
+    if (useMock) {
+      return new Promise((resolve) => {
+        resolve({
+          calorieCount: 1930,
+          proteinCount: 155,
+          carbohydrateCount: 290,
+          lipidCount: 50,
+        });
+      });
+    } else {
+      const response = await fetch(`http://localhost:3000/user/${id}/key-data`);
+      const data = await response.json();
+      return data.keyData;
+    }
+  };
+  
   

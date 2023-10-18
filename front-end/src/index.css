@@ -135,3 +135,8 @@ body {
   grid-row: 5 / 5;
 }
 
+.keyData {
+  display: flex;
+}
+
+
