@@ -16,7 +16,7 @@ const mockData = {
     }
   };
 
-  export const getUserById = async (id, useMock = true) => {
+  export const getUserById = async (id, useMock = false) => {
     if (useMock) {
       return new Promise((resolve) => {
         resolve(mockData);
@@ -28,21 +28,20 @@ const mockData = {
     }
   };
 
-  export const getKeyDataById = async (id, useMock = true) => {
-    if (useMock) {
-      return new Promise((resolve) => {
-        resolve({
-          calorieCount: 1930,
-          proteinCount: 155,
-          carbohydrateCount: 290,
-          lipidCount: 50,
-        });
-      });
-    } else {
-      const response = await fetch(`http://localhost:3000/user/${id}/key-data`);
-      const data = await response.json();
-      return data.keyData;
-    }
+  export const getActivityById = async (id) => {
+    const response = await fetch(`http://localhost:3000/user/${id}/activity`);
+    const data = await response.json();
+    return data.data.sessions;
   };
+
+  export const getAverageSessionsById = async (id) => {
+    const response = await fetch(`http://localhost:3000/user/${id}/average-sessions`);
+    const data = await response.json();
+    return data.data.sessions;
+  };
+  
+  
+
+
   
   

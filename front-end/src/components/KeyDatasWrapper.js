@@ -1,23 +1,11 @@
-import React, { useEffect, useState } from "react";
+import React from "react";
 import KeyData from "./KeyData";
 import iconFire from "../assets/icons/iconFire.svg";
 import iconProtein from "../assets/icons/iconProtein.svg";
 import iconCarbs from "../assets/icons/iconCarbs.svg";
 import iconFats from "../assets/icons/iconFats.svg";
-import { getKeyDataById } from "../services/apiServices";
 
-const KeyDatasWrapper = () => {
-  const [keyData, setKeyData] = useState(null);
-
-  useEffect(() => {
-    const fetchData = async () => {
-        const data = await getKeyDataById(12);
-        setKeyData(data);
-    };
-
-    fetchData();
-  }, []);
-
+const KeyDatasWrapper = ({ keyData }) => {
   return (
     <>
       {keyData && (
@@ -30,6 +18,6 @@ const KeyDatasWrapper = () => {
       )}
     </>
   );
-};  
+}; 
 
 export default KeyDatasWrapper;

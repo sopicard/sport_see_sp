@@ -51,6 +51,11 @@ body {
   gap: 0.5rem;
 }
 
+/* ! PROVISOIRE ! */
+.navtop__logo {
+  padding-left: 1rem;
+}
+
 .navtop__home,
 .navtop__profile,
 .navtop__settings,
