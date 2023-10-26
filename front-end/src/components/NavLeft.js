@@ -7,10 +7,12 @@ import iconDumbbell from "../assets/icons/iconDumbbell.svg";
 const NavLeft = () => {
     return (
         <div className="navleft">
-            <img src={iconYoga} alt="icon of yoga position" className="navleft__yoga"/>
-            <img src={iconSwimmer} alt="icon of swimmer" className="navleft__swimmer"/>
-            <img src={iconCyclist} alt="icon of cyclist" className="navleft__cyclist"/>
-            <img src={iconDumbbell} alt="icon of dumbbell" className="navleft__dumbbell"/>
+            <div className="navleft__icons">
+                <img src={iconYoga} alt="icon of yoga position" className="navleft__yoga"/>
+                <img src={iconSwimmer} alt="icon of swimmer" className="navleft__swimmer"/>
+                <img src={iconCyclist} alt="icon of cyclist" className="navleft__cyclist"/>
+                <img src={iconDumbbell} alt="icon of dumbbell" className="navleft__dumbbell"/>
+            </div>
             <p className="navleft__p">Copyright, SportSee 2020</p>
         </div>
     );

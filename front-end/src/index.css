@@ -7,126 +7,106 @@ body {
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   padding: 0;
-  box-sizing: border-box;
+  box-sizing: border-box;    
 }
 
 :root {
-  --background-light: #FFFFFF;
-  --background-dark: #000000;
-  --light-grey: #FBFBFB;
-  --medium-grey: #9B9EAC;
-  --dark-grey: #282D30;
+  --bg-light: #FFFFFF;
+  --bg-dark: #000000;
+  --grey1: #FBFBFB;
+  --grey2: #9B9EAC;
+  --grey3: #74798c;
+  --grey4: #282D30;
+  --blue1: #20253a;
   --red1: #E60000;
   --red2: #FF0000;
   --red3: #FF0101;
-  --font-size-large: 3rem;
-  --font-size-med: 1.5rem;
-  --font-size-reg: 1.1rem;
-  --font-size-small: 0.7rem;
-  --font-weight-med: 500;
-  --font-weight-reg: 400; 
+  --fs-large: 3rem;
+  --fs-med: 1.5rem;
+  --fs-reg: 1.1rem;
+  --fs-small: 1rem;
+  --fs-xs: 0.7rem;
+  --fs-xxs: 0.5rem;
+  --fw-med: 500;
+  --fw-reg: 400; 
   --border-radius: 5px; 
 }
 
 .main-container {
   display: grid;
-  grid-template-columns: repeat(12, 1fr);
-  grid-template-rows: repeat(11, 1fr);
-  width: 100%;
-  height: 100vh;
+  grid-template-areas: 
+    "navtop navtop navtop navtop navtop navtop navtop navtop navtop navtop navtop navtop"
+    "navleft . . . . . . . . . . ."
+    "navleft . . . . . . . . . . ."
+    "navleft . . . . . . . . . . ."
+    "navleft . maintitle maintitle . . . . . . . ."
+    "navleft . subtitle subtitle . . . . . . . . "
+    "navleft . . . . . . . . . . ."
+    "navleft . dailyactivity dailyactivity . . . . . keydatacal . ."
+    "navleft . dailyactivity dailyactivity . . . . . keydatapro . ."
+    "navleft . averagesessions performance todayscore . . . . keydataglu . ."
+    "navleft . averagesessions performance todayscore . . . . keydatalip . ."
+    "navleft . . . . . . . . . . ."
+    "navleft . . . . . . . . . . .";
+    width: 100%;
+    height: 100vh;
 }
 
+
 .navtop {
-  display: grid;
-  grid-row: 1 / 2;
-  grid-column: 1 / -1;
+  background-color: var(--bg-dark);
+  grid-area: navtop;
+  display: flex;
+  justify-content: space-between;
+  padding: 1rem;
   align-items: center;
-  grid-template-areas: "logoName logoName home profile settings community";
-  background-color: var(--background-dark);
 }
 
 .navtop__logoName {
-  z-index: 1;
   display: flex;
   gap: 0.5rem;
-}
-
-/* ! PROVISOIRE ! */
-.navtop__logo {
-  padding-left: 1rem;
 }
 
 .navtop__home,
 .navtop__profile,
 .navtop__settings,
 .navtop__community {
-  color: var(--background-light);
-  font-size: var(--font-size-med);
-  font-weight: var(--font-weight-med);
-}
-
-.navtop__home {
-  grid-area: home;
-}
-
-.navtop__profile {
-  grid-area: profile;
-}
-
-.navtop__settings {
-  grid-area: settings;
-}
-
-.navtop__community {
-  grid-area: community;
+  color: var(--bg-light);
+  font-size: var(--fs-med);
+  font-weight: var(--fw-med);
 }
 
 .navleft {
-  display: grid;
-  justify-content: center;
-  align-items: center;
-  grid-column: 1 / 2;
-  grid-row: 1 / -1;
-  background-color: var(--background-dark);
-  z-index: 0;
+  background-color: var(--bg-dark);
+  grid-area: navleft;
+  display: flex;
+  flex-direction: column;
+  padding: 0 1rem;
+  width: 64px;
+  justify-content: flex-end;
+  gap: 5rem;
 }
 
-.navleft__yoga {
-  grid-row: 5 / 5;
-  grid-column: 1 / 2;
-}
-
-.navleft__swimmer {
-  grid-row: 6 / 6;
-  grid-column: 1 / 2;
-}
-
-.navleft__cyclist {
-  grid-row: 7 / 7;
-  grid-column: 1 / 2;
-}
-
-.navleft__dumbbell {
-  grid-row: 8 / 8;
-  grid-column: 1 / 2;
+.navleft__icons {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
 }
 
 .navleft__p {
   writing-mode: vertical-rl;
   transform: rotate(180deg);
-  grid-row: 9 / 10;
-  grid-column: 1 / 2;
-  color: var(--background-light);
-  font-size: var(--font-size-small);
-  font-weight: var(--font-weight-med);
-  justify-self: center;
+  color: var(--bg-light);
+  font-size: var(--fs-xs);
+  font-weight: var(--fw-med);
+  align-self: center;
+  padding-top: 3rem;
 }
 
 .header__mainTitle {
-  font-size: var(--font-size-large);
-  font-weight: var(--font-weight-med);
-  grid-column: 3 / 7;
-  grid-row: 4 / 4;
+  grid-area: maintitle;
+  font-size: var(--fs-large);
+  font-weight: var(--fw-med);
 }
 
 .header__firstName {
@@ -134,14 +114,145 @@ body {
 }
 
 .header__subTitle {
-  font-size: var(--font-size-reg);
-  font-weight: var(--font-weight-reg);
-  grid-column: 3 / 7;
-  grid-row: 5 / 5;
+  grid-area: subtitle;
+  font-size: var(--fs-reg);
+  font-weight: var(--fw-reg);
 }
+
+.dailyActivity {
+  grid-area: dailyactivity;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  font-size: var(--fs-xs);
+  background-color: var(--grey1);
+  padding: 0.6rem;
+}
+
+.dailyActivity__infos {
+  padding: 0.5rem;
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
+}
+
+.dailyActivity h2 {
+  color: var(--blue1);
+  padding-left: 2rem;
+  font-weight: var(--fw-med);
+  font-size: var(--fs-small);
+}
+
+.dailyActivity__legend {
+  display: flex;
+  padding-right: 4rem;
+  align-self: center;
+}
+
+.dailyActivity__kg {
+  color: var(--grey4);
+}
+
+.dailyActivity__kcal {
+  color: var(--grey4);
+  margin-left: 0.6rem;
+}
+
+.dailyActivity__dotDark {
+  color: var(--grey4);
+}
+
+.dailyActivity__dotRed {
+  color: var(--red1);
+}
+
+.dailyActivity__tooltip {
+  background-color: var(--red1);
+  color: var(--bg-light);
+  padding: 1rem 0.5rem;
+  height: 4rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.averageSessions {
+  grid-area: averagesessions;
+  background-color: var(--red1);
+  color: #FFFFFF;
+  display: flex;
+  flex-direction: column;
+  justify-self: center;
+  padding: 0.5rem;
+}
+
+.averageSessions h2 {
+  font-size: var(--fs-small);
+  font-weight: var(--fw-med);
+  margin-top: 2rem;
+}
+
+.averageSessions__tooltip {
+  background-color: var(--bg-light);
+  padding: 0.2rem;
+  color: var(--bg-dark);
+  font-weight: var(--fw-med);
+  font-size: var(--fs-xxs);
+}
+
+.performance {
+   grid-area: performance;
+   background-color: var(--grey4);
+   color: var(--bg-light);
+}
+
+/* .todayScore {
+  grid-area: todayscore;
+  background-color: var(--grey1);
+  color: var(--bg-dark);
+} */
 
 .keyData {
   display: flex;
+  background-color: var(--grey1);
+  justify-content: center;
+  margin-bottom: 1rem;
+}
+
+.keyData__infos {
+  padding: 0.5rem;
+  align-self: center;
+}
+
+.keyData__icon {
+  width: 50px;
+}
+
+.keyData--calories {
+  grid-area: keydatacal;
+}
+
+.keyData--protéines {
+  grid-area: keydatapro;
+}
+
+.keyData--glucides {
+  grid-area: keydataglu ;
+}
+
+.keyData--lipides {
+  grid-area: keydatalip;
+}
+
+.keyData__value {
+  font-size: var(--fs-reg);
+  font-weight: bold;
+}
+
+.keyData__title {
+  font-size: var(--fs-xs);
+  font-weight: var(--fw-med);
 }
 
 
