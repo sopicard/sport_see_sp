@@ -1,5 +1,5 @@
 import React from "react";
-import { BarChart, Bar, XAxis, YAxis, CartesianGrid, Tooltip } from "recharts";
+import {  ResponsiveContainer, BarChart, Bar, XAxis, YAxis, CartesianGrid, Tooltip } from "recharts";
 
 const CustomLegend = () => (
   <div className="dailyActivity__legend">
@@ -31,39 +31,48 @@ const DailyActivity = ({ data }) => {
         <h2>Activité quotidienne</h2>
         <CustomLegend />
       </div>
-        <BarChart width={500} height={200} data={data} barGap={10}>
-          <XAxis dataKey="day"
-                 tickFormatter={formatDateToDay} 
-                 tickLine={false} 
-         />
-    
-          {/* Axe Y pour le poids */}
-          <YAxis 
-              yAxisId="left" 
-              type="number" 
-              domain={[65, 85]} 
-              orientation="right" 
-              ticks={[65, 75, 85]}
-              axisLine={false}
+        <ResponsiveContainer  height={200} >
+          <BarChart data={data} barGap={8} barCategoryGap={1}>
+            {/* <XAxis dataKey="day"
+                  tickFormatter={formatDateToDay} 
+                  tickLine={false} 
+          /> */}
+            <XAxis 
+              dataKey="day"
+              tickFormatter={formatDateToDay} 
               tickLine={false}
-          />
-    
-          {/* Axe Y pour les calories (sans affichage) */}
-          <YAxis yAxisId="right" hide={true} />
+              tick={{ fontSize: 14 }} // taille de la police pour les ticks
+              dy={15} // décaler les ticks vers le bas
+              stroke="#000" // la couleur de la police des ticks
+            />
+      
+            {/* Axe Y pour le poids */}
+            <YAxis 
+                yAxisId="left" 
+                type="number" 
+                domain={[65, 85]} 
+                orientation="right" 
+                ticks={[65, 75, 85]} 
+                axisLine={false}
+                tickLine={false}
+            />
+      
+            {/* Axe Y pour les calories (sans affichage) */}
+            <YAxis yAxisId="right" hide={true} />
 
-          <CartesianGrid vertical={false} />
-          <Tooltip content={<CustomTooltip />} />
+            <CartesianGrid vertical={false} strokeDasharray="1 1"/>
+            <Tooltip content={<CustomTooltip />} />
 
-          {/* Barre pour le poids utilisant le premier axe Y */}
-          <Bar yAxisId="left" dataKey="kilogram" fill="#282D30" barSize={7} radius={[5, 5, 0, 0]} />
+            {/* Barre pour le poids utilisant le premier axe Y */}
+            <Bar yAxisId="left" dataKey="kilogram" fill="#282D30" barSize={7} radius={[5, 5, 0, 0]} />
 
-          {/* Barre pour les calories utilisant le second axe Y */}
-          <Bar yAxisId="right" dataKey="calories" fill="#E60000" barSize={7} radius={[5, 5, 0, 0]} />
-        </BarChart>  
+            {/* Barre pour les calories utilisant le second axe Y */}
+            <Bar yAxisId="right" dataKey="calories" fill="#E60000" barSize={7} radius={[5, 5, 0, 0]} />
+          </BarChart>  
+        </ResponsiveContainer>
     </div>
   );
 };
 
 export default DailyActivity;
-
 

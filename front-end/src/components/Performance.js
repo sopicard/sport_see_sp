@@ -1,36 +1,43 @@
 import React from "react";
-import { Radar, RadarChart, PolarGrid, PolarAngleAxis } from 'recharts';
+import { ResponsiveContainer, Radar, RadarChart, PolarGrid, PolarAngleAxis } from 'recharts';
 
 const translations = {
-    cardio: "Cardio",
-    energy: "Énergie",
-    endurance: "Endurance",
-    strength: "Force",
-    speed: "Vitesse",
-    intensity: "Intensité"
-  };
-  
-  function translate(key) {
-    return translations[key] || key;
-  }
-
+  1: "Intensité",
+  2: "Vitesse",
+  3: "Force",
+  4: "Endurance",
+  5: "Énergie",
+  6: "Cardio",
+};
 
 function Performance ({ data }) {
-    const dataForRadarChart = data.data.map(item => ({
-        subject: translate(data.kind[item.kind]),
-        value: item.value
-    }));
+
+    // Traduction et tri des données
+    const dataForRadarChart = data.data
+      .map((item) => ({
+        ...item,
+        kind: translations[item.kind],
+      }))
+      .sort((a, b) => {
+        const order = ["Intensité", "Vitesse", "Force", "Endurance", "Énergie", "Cardio"];
+        return order.indexOf(a.kind) - order.indexOf(b.kind);
+      })
+      .map(item => ({ // Reformatage des données pour le graphique
+        subject: item.kind,
+        value: item.value,
+      }));
   
     return (
       <div className="performance">  
-        <RadarChart cx={150} cy={100} outerRadius={75} width={300} height={200} data={dataForRadarChart}>
-            <PolarGrid />
-            <PolarAngleAxis dataKey="subject" />
-            <Radar name="Performance" dataKey="value" stroke="#FF0101" fill="#FF0101" fillOpacity={0.7} />
-        </RadarChart>
+        <ResponsiveContainer width="100%" height="100%">
+          <RadarChart cx="50%" cy="50%" outerRadius="65%" data={dataForRadarChart}>
+              <PolarGrid />
+              <PolarAngleAxis dataKey="subject" tick={{ fontSize: 12 }}/>
+              <Radar name="Performance" dataKey="value" stroke="#FF0101" fill="#FF0101" fillOpacity={0.7} />
+          </RadarChart>
+        </ResponsiveContainer>
       </div>
     );
-  }
+}
 
-  export default Performance;
-  
+export default Performance;

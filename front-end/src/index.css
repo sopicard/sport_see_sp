@@ -7,7 +7,7 @@ body {
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   padding: 0;
-  box-sizing: border-box;    
+  box-sizing: border-box;   
 }
 
 :root {
@@ -29,33 +29,35 @@ body {
   --fs-xxs: 0.5rem;
   --fw-med: 500;
   --fw-reg: 400; 
-  --border-radius: 5px; 
+  --br: 5px; 
 }
 
 .main-container {
+  width: 100%;
+  height: 100vh; 
   display: grid;
-  grid-template-areas: 
-    "navtop navtop navtop navtop navtop navtop navtop navtop navtop navtop navtop navtop"
-    "navleft . . . . . . . . . . ."
-    "navleft . . . . . . . . . . ."
-    "navleft . . . . . . . . . . ."
-    "navleft . maintitle maintitle . . . . . . . ."
-    "navleft . subtitle subtitle . . . . . . . . "
-    "navleft . . . . . . . . . . ."
-    "navleft . dailyactivity dailyactivity . . . . . keydatacal . ."
-    "navleft . dailyactivity dailyactivity . . . . . keydatapro . ."
-    "navleft . averagesessions performance todayscore . . . . keydataglu . ."
-    "navleft . averagesessions performance todayscore . . . . keydatalip . ."
-    "navleft . . . . . . . . . . ."
-    "navleft . . . . . . . . . . .";
-    width: 100%;
-    height: 100vh;
+  grid-template: 
+    "navt  navt  navt  navt  navt  navt  navt  navt  navt" 1fr
+    "navl   .     .     .     .     .     .     .     .  " 1fr
+    "navl   .     .     .     .     .     .     .     .  " 1fr
+    "navl   .    mtit  mtit   .     .     .     .     .  " 1fr
+    "navl   .    stit  stit  stit   .     .     .     .  " 1fr
+    "navl   .     .     .     .     .     .     .     .  " 1fr
+    "navl   .    dact  dact  dact   .    cal   cal    .  " 1fr
+    "navl   .    dact  dact  dact   .    cal   cal    .  " 1fr
+    "navl   .    dact  dact  dact   .    pro   pro    .  " 1fr
+    "navl   .     .     .     .     .    pro   pro    .  " 1fr
+    "navl   .    asess perf  scor   .    glu   glu    .  " 1fr
+    "navl   .    asess perf  scor   .    glu   glu    .  " 1fr
+    "navl   .    asess perf  scor   .    lip   lip    .  " 1fr
+    "navl   .    asses perf  scor   .    lip   lip    .  " 1fr
+    / 1fr  1fr  1fr  1fr  1fr  1fr  1fr  1fr  1fr;
 }
 
 
 .navtop {
   background-color: var(--bg-dark);
-  grid-area: navtop;
+  grid-area: navt;
   display: flex;
   justify-content: space-between;
   padding: 1rem;
@@ -78,13 +80,13 @@ body {
 
 .navleft {
   background-color: var(--bg-dark);
-  grid-area: navleft;
+  grid-area: navl;
   display: flex;
   flex-direction: column;
   padding: 0 1rem;
   width: 64px;
   justify-content: flex-end;
-  gap: 5rem;
+  gap: 7rem;
 }
 
 .navleft__icons {
@@ -104,7 +106,7 @@ body {
 }
 
 .header__mainTitle {
-  grid-area: maintitle;
+  grid-area: mtit;
   font-size: var(--fs-large);
   font-weight: var(--fw-med);
 }
@@ -114,40 +116,43 @@ body {
 }
 
 .header__subTitle {
-  grid-area: subtitle;
+  grid-area: stit;
   font-size: var(--fs-reg);
   font-weight: var(--fw-reg);
 }
 
 .dailyActivity {
-  grid-area: dailyactivity;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
+  grid-area: dact;
   font-size: var(--fs-xs);
   background-color: var(--grey1);
-  padding: 0.6rem;
+	height: 300px;
+  width: 835px;
+	border-radius: var(--br);
+	box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.0212249);
+	padding: 2rem 0 0 1.5rem;
+	
+	@media (max-width: 1025px) {
+      padding-left:0;}
 }
 
 .dailyActivity__infos {
-  padding: 0.5rem;
   display: flex;
   justify-content: space-between;
-  width: 100%;
+  margin-bottom: 2.5rem;
+  margin-right: 1.5rem;
+  background-color: var(--grey1);
 }
 
 .dailyActivity h2 {
   color: var(--blue1);
-  padding-left: 2rem;
   font-weight: var(--fw-med);
   font-size: var(--fs-small);
 }
 
 .dailyActivity__legend {
   display: flex;
-  padding-right: 4rem;
   align-self: center;
+  padding-right: 1rem;
 }
 
 .dailyActivity__kg {
@@ -175,22 +180,28 @@ body {
   display: flex;
   flex-direction: column;
   justify-content: space-between;
+  margin-left: 1rem;
 }
 
 .averageSessions {
-  grid-area: averagesessions;
-  background-color: var(--red1);
+  grid-area: asess;
   color: #FFFFFF;
+  border-radius: var(--br);
+  position: relative;
+  width: 258px;
+  height: 263px;
   display: flex;
   flex-direction: column;
-  justify-self: center;
-  padding: 0.5rem;
+  justify-content: space-between;
+  background: #ff0000;
+  box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.0212249);
 }
 
 .averageSessions h2 {
   font-size: var(--fs-small);
   font-weight: var(--fw-med);
-  margin-top: 2rem;
+  position: absolute;
+  padding: 29px 34px 0 34px;
 }
 
 .averageSessions__tooltip {
@@ -201,28 +212,82 @@ body {
   font-size: var(--fs-xxs);
 }
 
-.performance {
-   grid-area: performance;
-   background-color: var(--grey4);
-   color: var(--bg-light);
+.averageSessions .recharts-tooltip-cursor {
+  display: none;
 }
 
-/* .todayScore {
-  grid-area: todayscore;
+.performance {
+   grid-area: perf;
+   background-color: var(--grey4);
+   color: var(--bg-light);
+   position: relative;
+   width: 258px;
+   height: 263px;
+   box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.0212249);
+   border-radius: var(--br);
+}
+
+.todayScore {
+  grid-area: scor;
   background-color: var(--grey1);
   color: var(--bg-dark);
-} */
+  position: relative;
+  width: 258px;
+  height: 263px;
+  border-radius: var(--br);
+}
+
+.todayScore h2 {
+  font-weight: var(--fw-med);
+  font-size: var(--fs-small);
+  color: var(--blue1);
+  position: absolute;
+  left: 20%;
+  top: 15%;
+  transform: translate(-50%, -50%);
+  line-height: 24px;
+}
+
+.todayScore__text {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  color: var(--blue1);
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  line-height: 20px;
+  background: #FBFBFB;
+  border-radius: 50%;
+}
+
+.todayScore__percentage {
+  font-weight: bold;
+  font-size: var(--fs-med);
+}
+
+.todayScore__objective {
+  font-weight: var(--fw-med);
+  font-size: var(--fs-small);
+  color: var(--grey3);
+  text-align: center;
+}
 
 .keyData {
-  display: flex;
   background-color: var(--grey1);
-  justify-content: center;
-  margin-bottom: 1rem;
+  display: flex;
+  padding: 2rem;
+  width: 180px;
+  height: 40px;
+  border-radius: var(--br)
 }
 
 .keyData__infos {
-  padding: 0.5rem;
-  align-self: center;
+  display:flex;
+  flex-direction:column;
+  margin-left: 1.5rem;
+  align-self: center; 
 }
 
 .keyData__icon {
@@ -230,29 +295,34 @@ body {
 }
 
 .keyData--calories {
-  grid-area: keydatacal;
+  grid-area: cal;
 }
 
 .keyData--protéines {
-  grid-area: keydatapro;
+  grid-area: pro;
 }
 
 .keyData--glucides {
-  grid-area: keydataglu ;
+  grid-area: glu ;
 }
 
 .keyData--lipides {
-  grid-area: keydatalip;
+  grid-area: lip;
 }
 
 .keyData__value {
   font-size: var(--fs-reg);
   font-weight: bold;
+  line-height: 24px;
+  color: var(--blue1);
+  margin-bottom:2px;
 }
 
 .keyData__title {
   font-size: var(--fs-xs);
   font-weight: var(--fw-med);
+  line-height: 24px;
+  color: var(--grey2);
 }
 
 

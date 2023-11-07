@@ -11,6 +11,7 @@ import iconFats from "./assets/icons/iconFats.svg";
 import DailyActivity from "./components/DailyActivity";
 import AverageSessions from "./components/AverageSessions";
 import Performance from "./components/Performance";
+import TodayScore from "./components/TodayScore";
 import { getUserById, getActivityById, getAverageSessionsById, getPerformanceById } from "./services/apiServices";
 
 function App() {
@@ -22,10 +23,17 @@ function App() {
 
   useEffect(() => {
     const fetchUserData = async () => {
-        const data = await getUserById(id);
-        setUserData(data);
+      const response = await getUserById(id);
+      let userData = response.data;
+    
+      if (!("todayScore" in userData)) {
+         // Utilise la valeur de "score" si "todayScore" n'est pas présent
+        userData = { ...userData, todayScore: userData.score };
+      }
+    
+      setUserData(userData);
     };
-
+    
     const fetchDailyActivity = async () => {
         const activityData = await getActivityById(id);
         setDailyActivity(activityData);
@@ -52,16 +60,17 @@ function App() {
     <div className="main-container">
       <NavTop />
       <NavLeft />
-      {userData && <Header firstName={userData.data.userInfos.firstName} />}
+      {userData && <Header firstName={userData.userInfos.firstName} />}
       {dailyActivity && <DailyActivity data={dailyActivity} />}
       {averageSessions && <AverageSessions data={averageSessions} />}
       {performanceData && <Performance data={performanceData} />}
+      {userData && <TodayScore score={userData.todayScore} />}
       {userData && (
         <>
-          <KeyData title="Calories" value={userData.data.keyData.calorieCount} icon={iconFire} />
-          <KeyData title="Protéines" value={userData.data.keyData.proteinCount} icon={iconProtein} />
-          <KeyData title="Glucides" value={userData.data.keyData.carbohydrateCount} icon={iconCarbs} />
-          <KeyData title="Lipides" value={userData.data.keyData.lipidCount} icon={iconFats} />
+          <KeyData title="Calories" value={userData.keyData.calorieCount} icon={iconFire} />
+          <KeyData title="Protéines" value={userData.keyData.proteinCount} icon={iconProtein} />
+          <KeyData title="Glucides" value={userData.keyData.carbohydrateCount} icon={iconCarbs} />
+          <KeyData title="Lipides" value={userData.keyData.lipidCount} icon={iconFats} />
         </>
       )}
     </div>
