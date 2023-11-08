@@ -33,10 +33,6 @@ const DailyActivity = ({ data }) => {
       </div>
         <ResponsiveContainer  height={200} >
           <BarChart data={data} barGap={8} barCategoryGap={1}>
-            {/* <XAxis dataKey="day"
-                  tickFormatter={formatDateToDay} 
-                  tickLine={false} 
-          /> */}
             <XAxis 
               dataKey="day"
               tickFormatter={formatDateToDay} 
