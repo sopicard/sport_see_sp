@@ -60,18 +60,22 @@ function App() {
     <div className="main-container">
       <NavTop />
       <NavLeft />
-      {userData && <Header firstName={userData.userInfos.firstName} />}
-      {dailyActivity && <DailyActivity data={dailyActivity} />}
-      {averageSessions && <AverageSessions data={averageSessions} />}
-      {performanceData && <Performance data={performanceData} />}
-      {userData && <TodayScore score={userData.todayScore} />}
+      {userData && <Header firstName={userData.userInfos.firstName} />}  
+      <div className="graphics">
+        {dailyActivity && <DailyActivity data={dailyActivity} />}
+        <div className="squares">
+          {averageSessions && <AverageSessions data={averageSessions} />}
+          {performanceData && <Performance data={performanceData} />}
+          {userData && <TodayScore score={userData.todayScore} />}
+        </div>
+      </div>
       {userData && (
-        <>
+        <div className="metrics">
           <KeyData title="Calories" value={userData.keyData.calorieCount} icon={iconFire} />
           <KeyData title="Protéines" value={userData.keyData.proteinCount} icon={iconProtein} />
           <KeyData title="Glucides" value={userData.keyData.carbohydrateCount} icon={iconCarbs} />
           <KeyData title="Lipides" value={userData.keyData.lipidCount} icon={iconFats} />
-        </>
+        </div>
       )}
     </div>
   );

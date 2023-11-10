@@ -29,11 +29,13 @@ function Performance ({ data }) {
   
     return (
       <div className="performance">  
-        <ResponsiveContainer width="100%" height="100%">
-          <RadarChart cx="50%" cy="50%" outerRadius="65%" data={dataForRadarChart}>
-              <PolarGrid />
-              <PolarAngleAxis dataKey="subject" tick={{ fontSize: 12 }}/>
-              <Radar name="Performance" dataKey="value" stroke="#FF0101" fill="#FF0101" fillOpacity={0.7} />
+        <ResponsiveContainer width="100%" height={224}>
+          <RadarChart cx="50%" cy="50%" outerRadius="70%" data={dataForRadarChart} 
+            margin={{ top: 0, right: 30, bottom: 0, left: 30 }}
+          >
+            <PolarGrid />
+            <PolarAngleAxis dataKey="subject" tick={{ fontSize: 12 }}/>
+            <Radar name="Performance" dataKey="value" stroke="#FF0101" fill="#FF0101" fillOpacity={0.7} />
           </RadarChart>
         </ResponsiveContainer>
       </div>

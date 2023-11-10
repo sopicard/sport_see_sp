@@ -16,11 +16,10 @@ const AverageSessions = ({ data }) => {
   return (
     <div className="averageSessions">
       <h2>Durée moyenne des <br /> sessions</h2>
-      <ResponsiveContainer width="100%" height="100%">
+      <ResponsiveContainer width="100%" height={224}>
         <LineChart  
           data={data} 
           strokeWidth={1}
-          margin={{ top: 20, right: 5, bottom: 20, left: 5 }}
           onMouseMove={(e) => {
             if (e.isTooltipActive === true) {
               let div = document.querySelector(".averageSessions")
@@ -43,12 +42,12 @@ const AverageSessions = ({ data }) => {
           />
           <YAxis
             dataKey="sessionLength"
-            domain={[0, "dataMax + 30"]}
+            domain={[0, "dataMax + 80"]}
             hide={true}
           />
           <Tooltip content={<CustomTooltip />} />
           <Line
-            type="monotone"
+            type="basis"
             dataKey="sessionLength"
             stroke="rgba(255, 255, 255, 0.7)"
             strokeWidth={2}

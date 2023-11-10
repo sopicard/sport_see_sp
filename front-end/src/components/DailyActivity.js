@@ -31,7 +31,7 @@ const DailyActivity = ({ data }) => {
         <h2>Activité quotidienne</h2>
         <CustomLegend />
       </div>
-        <ResponsiveContainer  height={200} >
+        <ResponsiveContainer  height={150} >
           <BarChart data={data} barGap={8} barCategoryGap={1}>
             <XAxis 
               dataKey="day"

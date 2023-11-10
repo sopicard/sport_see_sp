@@ -37,25 +37,24 @@ body {
   height: 100vh; 
   display: grid;
   grid-template: 
-    "navt  navt  navt  navt  navt  navt  navt  navt  navt" 1fr
-    "navl   .     .     .     .     .     .     .     .  " 1fr
-    "navl   .    mtit  mtit   .     .     .     .     .  " 1fr
-    "navl   .    stit  stit  stit   .     .     .     .  " 1fr
-    "navl   .     .     .     .     .     .     .     .  " 1fr
-    "navl   .    dact  dact  dact   .    cal   cal    .  " 1fr
-    "navl   .    dact  dact  dact   .    pro   pro    .  " 1fr
-    "navl   .    asess perf  scor   .    glu   glu    .  " 1fr
-    "navl   .    asess perf  scor   .    lip   lip    .  " 1fr
-    / 1fr  1fr  1fr  1fr  1fr  1fr  1fr  1fr  1fr;
+    "navl  navt  navt  navt  navt  navt  navt  navt navt" 10vh
+    "navl   .    mtit  mtit   .     .     .     .    .  " 10vh
+    "navl   .    stit  stit  stit   stit  .     .    .  " 15vh
+    "navl   .    grap  grap  grap   grap  .    met   .  " 20vh
+    "navl   .    grap  grap  grap   grap  .    met   .  " 20vh
+    "navl   .    grap  grap  grap   grap  .    met   .  " 20vh
+    "navl   .     .     .     .     .     .     .    .  " 5vh
+    /64px   10%   1fr   1fr   1fr   1fr    3%   1fr   7%;
 }
-
 
 .navtop {
   background-color: var(--bg-dark);
   grid-area: navt;
+  z-index: 2;
   display: flex;
-  justify-content: space-between;
-  padding: 1rem;
+  padding-left: 13rem;
+  justify-content: space-evenly;
+  gap: 5rem;
   align-items: center;
   border-color: var(--bg-dark);
 }
@@ -63,6 +62,9 @@ body {
 .navtop__logoName {
   display: flex;
   gap: 0.5rem;
+  position: absolute;
+  top: 12px;
+  left: 14px;
 }
 
 .navtop__home,
@@ -77,6 +79,7 @@ body {
 .navleft {
   background-color: var(--bg-dark);
   grid-area: navl;
+  z-index: 1;
   display: flex;
   flex-direction: column;
   padding: 0 1rem;
@@ -105,6 +108,7 @@ body {
   grid-area: mtit;
   font-size: var(--fs-large);
   font-weight: var(--fw-med);
+  align-self: flex-end;
 }
 
 .header__firstName {
@@ -115,22 +119,29 @@ body {
   grid-area: stit;
   font-size: var(--fs-reg);
   font-weight: var(--fw-reg);
+  align-self: center;
+}
+
+.graphics {
+  grid-area: grap;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  gap: 1rem;
 }
 
 .dailyActivity {
-  grid-area: dact;
   font-size: var(--fs-xs);
   background-color: var(--grey1);
-	height: 300px;
 	border-radius: var(--br);
 	box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.0212249);
-	padding: 2rem 0 0 1.5rem;
+	padding: 1rem 0 1rem 1rem;
 }
 
 .dailyActivity__infos {
   display: flex;
   justify-content: space-between;
-  margin-bottom: 2.5rem;
+  margin-bottom: 2rem;
   margin-right: 1.5rem;
   background-color: var(--grey1);
 }
@@ -175,25 +186,31 @@ body {
   margin-left: 1rem;
 }
 
-.averageSessions {
-  grid-area: asess;
-  color: #FFFFFF;
+.squares {
+  display: flex;
+  justify-content: space-between;
+}
+
+.averageSessions, .performance, .todayScore {
   border-radius: var(--br);
   position: relative;
-  width: 258px;
-  height: 263px;
+  box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.0212249);
+  width: 30%;
+}
+
+.averageSessions {
+  color: #FFFFFF;
   display: flex;
   flex-direction: column;
   justify-content: space-between;
   background: #ff0000;
-  box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.0212249);
 }
 
 .averageSessions h2 {
   font-size: var(--fs-small);
   font-weight: var(--fw-med);
   position: absolute;
-  padding: 29px 34px 0 34px;
+  padding: 25px 0 0 30px;
 }
 
 .averageSessions__tooltip {
@@ -209,24 +226,13 @@ body {
 }
 
 .performance {
-   grid-area: perf;
    background-color: var(--grey4);
    color: var(--bg-light);
-   position: relative;
-   width: 258px;
-   height: 263px;
-   box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.0212249);
-   border-radius: var(--br);
 }
 
 .todayScore {
-  grid-area: scor;
   background-color: var(--grey1);
   color: var(--bg-dark);
-  position: relative;
-  width: 258px;
-  height: 263px;
-  border-radius: var(--br);
 }
 
 .todayScore h2 {
@@ -234,10 +240,9 @@ body {
   font-size: var(--fs-small);
   color: var(--blue1);
   position: absolute;
-  left: 20%;
-  top: 15%;
+  left: 16%;
+  top: 10%;
   transform: translate(-50%, -50%);
-  line-height: 24px;
 }
 
 .todayScore__text {
@@ -266,12 +271,17 @@ body {
   text-align: center;
 }
 
+.metrics {
+  grid-area: met;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
 .keyData {
   background-color: var(--grey1);
   display: flex;
-  padding: 2rem;
-  width: 180px;
-  height: 40px;
+  padding: 1.5rem;
   border-radius: var(--br)
 }
 
@@ -284,22 +294,6 @@ body {
 
 .keyData__icon {
   width: 50px;
-}
-
-.keyData--calories {
-  grid-area: cal;
-}
-
-.keyData--protéines {
-  grid-area: pro;
-}
-
-.keyData--glucides {
-  grid-area: glu ;
-}
-
-.keyData--lipides {
-  grid-area: lip;
 }
 
 .keyData__value {
@@ -316,5 +310,3 @@ body {
   line-height: 24px;
   color: var(--grey2);
 }
-
-
