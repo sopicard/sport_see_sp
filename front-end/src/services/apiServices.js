@@ -12,7 +12,7 @@ export const getUserById = async (id, useMock = true) => {
 
 export const getActivityById = async (id, useMock = true) => {
   if (useMock) {
-    return { data: mockData.data[id].activity.sessions };
+    return  mockData.data[id].sessions;
   } else {
     const response = await fetch(`http://localhost:3000/user/${id}/activity`);
     const data = await response.json();
@@ -22,7 +22,7 @@ export const getActivityById = async (id, useMock = true) => {
 
 export const getAverageSessionsById = async (id, useMock = true) => {
   if (useMock) {
-    return { data: mockData.data[id].averageSessions.sessions };
+    return mockData.data[id].averageSessions;
   } else {
     const response = await fetch(`http://localhost:3000/user/${id}/average-sessions`);
     const data = await response.json();

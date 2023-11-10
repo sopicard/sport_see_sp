@@ -22,8 +22,9 @@ function App() {
   const [performanceData, setPerformanceData] = useState(null);
 
   useEffect(() => {
+    const useMock = process.env.useMock;
     const fetchUserData = async () => {
-      const response = await getUserById(id);
+      const response = await getUserById(id, useMock);
       let userData = response.data;
     
       if (!("todayScore" in userData)) {
@@ -35,17 +36,17 @@ function App() {
     };
     
     const fetchDailyActivity = async () => {
-        const activityData = await getActivityById(id);
+        const activityData = await getActivityById(id, useMock);
         setDailyActivity(activityData);
     };
 
     const fetchAverageSessions = async () => {
-        const sessionsData = await getAverageSessionsById(id);
+        const sessionsData = await getAverageSessionsById(id, useMock);
         setAverageSessions(sessionsData);
     };
 
     const fetchPerformanceData = async () => {
-        const perfData = await getPerformanceById(id);
+        const perfData = await getPerformanceById(id, useMock);
         setPerformanceData(perfData);
     };
 
