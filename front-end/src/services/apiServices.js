@@ -1,6 +1,6 @@
 import mockData from "../mockData.json";
 
-export const getUserById = async (id, useMock = true) => {
+export const getUserById = async (id, useMock = false) => {
   if (useMock) {
     return { data: mockData.data[id] }; 
   } else {
@@ -10,7 +10,7 @@ export const getUserById = async (id, useMock = true) => {
   }
 };
 
-export const getActivityById = async (id, useMock = true) => {
+export const getActivityById = async (id, useMock = false) => {
   if (useMock) {
     return  mockData.data[id].sessions;
   } else {
@@ -20,7 +20,7 @@ export const getActivityById = async (id, useMock = true) => {
   }
 };
 
-export const getAverageSessionsById = async (id, useMock = true) => {
+export const getAverageSessionsById = async (id, useMock = false) => {
   if (useMock) {
     return mockData.data[id].averageSessions;
   } else {
@@ -30,7 +30,7 @@ export const getAverageSessionsById = async (id, useMock = true) => {
   }
 };
 
-export const getPerformanceById = async (id, useMock = true) => {
+export const getPerformanceById = async (id, useMock = false) => {
   if (useMock) {
     return mockData.data[id].performance;
   } else {

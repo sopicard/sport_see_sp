@@ -22,7 +22,7 @@ function App() {
   const [performanceData, setPerformanceData] = useState(null);
 
   useEffect(() => {
-    const useMock = process.env.useMock;
+    const useMock = process.env.REACT_APP_useMock === "true";
     const fetchUserData = async () => {
       const response = await getUserById(id, useMock);
       let userData = response.data;
