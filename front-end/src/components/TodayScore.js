@@ -1,34 +1,38 @@
 import React from "react";
-import { PieChart, Pie, Cell, ResponsiveContainer } from "recharts";
+import { RadialBarChart, RadialBar, Cell, ResponsiveContainer } from "recharts";
 
 const TodayScore = ({ score }) => {
   const data = [
-    { name: "score", value: score },
-    { name: "remaining", value: 1 - score },
+    { name: "score", value: score, fill: "#FF0000" },
+    { name: "remaining", value: 1 - score, fill: "transparent" }
   ];
 
   return (
     <div className="todayScore">
       <h2>Score</h2>
       <ResponsiveContainer width="100%" height={224}>
-        <PieChart>
-          <Pie 
-            data={data} 
-            innerRadius={70} 
-            outerRadius={85} 
-            startAngle={90}
+        <RadialBarChart
+          cx="50%"
+          cy="50%"
+          innerRadius="70%" 
+          outerRadius="90%"
+          barSize={10}
+          data={data}
+          startAngle={180}
+          endAngle={-270}
+          background={{ fill: "#FFFFFF" }} 
+        >
+          <RadialBar
+            minAngle={15}
             dataKey="value"
+            cornerRadius={10}
           >
-            {data.map((entry, index) =>
-              index === 0 ? (
-                <Cell key={`cell-${index}`} cornerRadius={10} fill="#ff0000" />
-              ) : (
-                <Cell key={`cell-${entry}`} fill="#FBFBFB" />
-              )
-            )}
-          </Pie>
-        </PieChart>
-      </ResponsiveContainer>
+            {data.map((entry, index) => (
+              <Cell key={`cell-${index}`} fill={entry.fill} />
+            ))}
+          </RadialBar>
+        </RadialBarChart>
+      </ResponsiveContainer> 
       <div className="todayScore__text">
         <div className="todayScore__percentage">{`${(score * 100).toFixed(0)}%`}</div>
         <div className="todayScore__objective">
@@ -36,6 +40,7 @@ const TodayScore = ({ score }) => {
             <div>objectif</div>
         </div>
       </div>
+      <div className="todayScore__text-bg" />
     </div>
   );
 };

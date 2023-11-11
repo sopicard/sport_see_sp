@@ -38,8 +38,8 @@ const DailyActivity = ({ data }) => {
               tickFormatter={formatDateToDay} 
               tickLine={false}
               tick={{ fontSize: 14 }} // taille de la police pour les ticks
-              dy={15} // décaler les ticks vers le bas
-              stroke="#000" // la couleur de la police des ticks
+              dy={15} // décale les ticks vers le bas
+              stroke="#000" // couleur de la police des ticks
             />
       
             {/* Axe Y pour le poids */}

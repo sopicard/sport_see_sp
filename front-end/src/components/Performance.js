@@ -1,5 +1,5 @@
 import React from "react";
-import { ResponsiveContainer, Radar, RadarChart, PolarGrid, PolarAngleAxis } from 'recharts';
+import { ResponsiveContainer, Radar, RadarChart, PolarGrid, PolarAngleAxis } from "recharts";
 
 const translations = {
   1: "Intensité",

@@ -37,14 +37,14 @@ body {
   height: 100vh; 
   display: grid;
   grid-template: 
-    "navl  navt  navt  navt  navt  navt  navt  navt navt" 10vh
-    "navl   .    mtit  mtit   .     .     .     .    .  " 10vh
-    "navl   .    stit  stit  stit   stit  .     .    .  " 15vh
-    "navl   .    grap  grap  grap   grap  .    met   .  " 20vh
-    "navl   .    grap  grap  grap   grap  .    met   .  " 20vh
-    "navl   .    grap  grap  grap   grap  .    met   .  " 20vh
-    "navl   .     .     .     .     .     .     .    .  " 5vh
-    /64px   10%   1fr   1fr   1fr   1fr    3%   1fr   7%;
+    "navl  navt  navt  navt  navt   navt  navt  navt navt" 10vh
+    "navl   .    mtit  mtit   .      .     .     .    .  " 10vh
+    "navl   .    stit  stit  stit   stit   .     .    .  " 15vh
+    "navl   .    grap  grap  grap   grap   .    met   .  " 20vh
+    "navl   .    grap  grap  grap   grap   .    met   .  " 20vh
+    "navl   .    grap  grap  grap   grap   .    met   .  " 20vh
+    "navl   .     .     .     .      .     .     .    .  " 5vh
+    /64px  10%   1fr   1fr   1fr    1fr   3%    1fr   7%;
 }
 
 .error-message {
@@ -254,8 +254,8 @@ body {
   font-size: var(--fs-small);
   color: var(--blue1);
   position: absolute;
-  left: 16%;
-  top: 10%;
+  left: 20%;
+  top: 15%;
   transform: translate(-50%, -50%);
 }
 
@@ -271,6 +271,19 @@ body {
   line-height: 20px;
   background: #FBFBFB;
   border-radius: 50%;
+  z-index: 2;
+}
+
+.todayScore__text-bg {
+  position: absolute;
+  width: 9vw;
+  height: 9vw;
+  background: var(--bg-light);
+  border-radius: 50%;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  z-index: 1;
 }
 
 .todayScore__percentage {
